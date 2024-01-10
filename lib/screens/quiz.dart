@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quiz/screens/QuestionScreen.dart';
+import 'package:quiz/screens/resultScreen.dart';
 import 'package:quiz/screens/welcomeScreen.dart';
 
 class Quiz extends StatefulWidget {
@@ -22,7 +23,13 @@ class _QuizState extends State<Quiz> {
 
   void switchScreen() {
     setState(() {
-      activeScreen = const QuestionScreen();
+      activeScreen = QuestionScreen(showResultScreen);
+    });
+  }
+
+  void showResultScreen(answerList) {
+    setState(() {
+      activeScreen = ResultScreen(answerList, switchScreen);
     });
   }
 
